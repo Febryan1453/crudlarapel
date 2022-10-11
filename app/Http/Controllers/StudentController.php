@@ -72,7 +72,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Edit Data";
+        $student = Student::findOrFail($id);
+        return view('student.edit', compact('title','student'));
     }
 
     /**
@@ -84,7 +86,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+
+        // Cari data yang mau diedit
+        $student = Student::findOrFail($id);
+
+        //Proses Ubah datanya
+        $student->nama          = $request->nama;
+        $student->telp          = $request->telp;
+        $student->deskripsi     = $request->desc;
+
+        // Menyimpan data perubahan
+        $student->update();
+
+        // Setelah proses perubahan selesai diantar ke halaman index
+        return redirect()->route('student.index');
     }
 
     /**
@@ -95,6 +111,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->delete();
+        return redirect()->route('student.index');
     }
 }

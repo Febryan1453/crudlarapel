@@ -23,5 +23,7 @@ Route::controller(StudentController::class)->group(function(){
     Route::get('/students/create', 'create')->name('student.create');
     Route::post('/students/create/save', 'store')->name('student.store');
     Route::get('/students/detail/{id}', 'show')->name('student.show');
-    Route::delete('/students/delete/{id}', 'destroy')->name('student.destroy');
+    Route::get('/students/delete/{id}', 'destroy')->name('student.destroy');
+    Route::get('/students/edit/{id}', 'edit')->name('student.edit');
+    Route::put('/students/update/{id}', 'update')->name('student.update');
 });

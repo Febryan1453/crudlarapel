@@ -30,10 +30,10 @@
               <a href="{{ route('student.show', $row->id) }}" class="btn btn-success">
                 <i class="fa-solid fa-eye"></i>
               </a>
-              <a href="{{ route('student.show', $row->id) }}" class="btn btn-primary">
+              <a href="{{ route('student.edit', $row->id) }}" class="btn btn-primary">
                 <i class="fa-solid fa-pencil"></i>
               </a>
-              <a href="{{ route('student.show', $row->id) }}" class="btn btn-danger">
+              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $row->id }}">
                 <i class="fa-solid fa-trash-can"></i>
               </a>
             </div>  
@@ -42,6 +42,30 @@
 
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="delete{{ $row->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+              Yakin mau hapus data <strong style="color: red;">{{ $row->nama }}</strong> ?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="{{ route('student.destroy', $row->id) }}" class="btn btn-danger">
+                Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     @endforeach
 
