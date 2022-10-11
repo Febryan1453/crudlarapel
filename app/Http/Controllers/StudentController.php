@@ -39,11 +39,25 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $pesan = [
+            'nama.required'         => 'Nama lengkap masih kosong !',
+            'nama.min'              => 'Nama lengkap minimal 5 huruf !',
+            'telp.required'         => 'Nomor telepon masih kosong !',
+            'deskripsi.required'    => 'Deskripsi masih kosong !',
+        ];
+
+        $request->validate([
+            'nama'       => 'required|min:5',
+            'telp'       => 'required',
+            'deskripsi'  => 'required',
+        ], $pesan);
+
+
         $student = new Student();
 
         $student->nama      = $request->nama;
         $student->telp      = $request->telp;
-        $student->deskripsi = $request->desc;
+        $student->deskripsi = $request->deskripsi;
 
         $student->save();
 

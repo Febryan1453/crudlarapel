@@ -21,18 +21,33 @@
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
-                <input name="nama" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
+                <input value="{{old('nama')}}" name="nama" class="form-control @error('nama') is-invalid @enderror" type="text" id="exampleInputEmail1" aria-describedby="emailHelp">
+                @error('nama')
+                  <div class="invalid-feedback">
+                    {{$message}}
+                  </div>
+                @enderror
+              </div>
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Telepon</label>
-                <input name="telp" type="number" class="form-control" id="exampleInputPassword1">
-            </div>
+                <input value="{{old('telp')}}" name="telp" type="number" class="form-control  @error('telp') is-invalid @enderror" id="exampleInputPassword1">
+                @error('telp')
+                  <div class="invalid-feedback">
+                    {{$message}}
+                  </div>
+                @enderror
+              </div>
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
-                <input name="desc" type="text" class="form-control" id="exampleInputPassword1">
-            </div>
+                <input value="{{old('deskripsi')}}" name="deskripsi" type="text" class="form-control  @error('deskripsi') is-invalid @enderror" id="exampleInputPassword1">
+                @error('deskripsi')
+                  <div class="invalid-feedback">
+                    {{$message}}
+                  </div>
+                @enderror
+              </div>
             
             <button type="submit" class="btn btn-primary">Simpan Kontak</button>
         </form>

@@ -17,7 +17,7 @@
         <a href="{{ route('student.create') }}" class="btn btn-primary">Add Student</a>
     </div>
 
-    @foreach($student as $row)
+    @forelse($student as $row)
 
     <div class="card mb-3">
         <div class="card-body">
@@ -48,7 +48,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -65,9 +65,13 @@
         </div>
       </div>
     </div>
+    @empty
 
+    <p class="text-center">
+      Data Belum Ada
+    </p>
 
-    @endforeach
+    @endforelse
 
   </div>
     
